@@ -1,9 +1,9 @@
 import pytest
 import time
 
-from .pages.product_page import ProductPage
-from .pages.login_page import LoginPage
-from .pages.basket_page import BasketPage
+from pages.product_page import ProductPage
+from pages.login_page import LoginPage
+from pages.basket_page import BasketPage
 
 
 class TestGuestAddToBasketFromProductPage:
@@ -21,7 +21,6 @@ class TestGuestAddToBasketFromProductPage:
             8, 9,
         ],
     )
-    @pytest.fixture(scope="module")
     @pytest.mark.need_review
     def test_guest_can_add_product_to_basket(self, browser, promo):
         link = f"http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer{promo}"
@@ -93,7 +92,6 @@ class TestUserAddToBasketFromProductPage:
         page.register_new_user(
             email=str(time.time()) + "@fakemail.org", password="Psad1wsadSa"
         )
-        time.sleep(3)
         page.should_be_authorized_user()
 
     @pytest.mark.need_review
